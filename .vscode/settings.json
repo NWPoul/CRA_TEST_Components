@@ -1,0 +1,21 @@
+{
+
+  "eslintConfig": {
+    "extends": ["react-app", "shared-config"],
+	"rules": {
+	  "eqeqeq": "off",
+	  "default-case": "off",
+      "no-unused-vars": "on"
+	}
+  },
+  "workbench.editor.enablePreview": false,
+  "files.exclude": {
+    "package-lock.json": true,
+    "jsconfig.json": true,
+    "Arch": true,
+    "build": true,
+    "src\\assets": true,
+    "README.md": true,
+    "OldCode": true
+  }
+}
