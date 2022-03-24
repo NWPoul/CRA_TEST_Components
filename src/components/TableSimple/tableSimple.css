@@ -1,0 +1,27 @@
+.tableSimple-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+}
+
+.tableSimple th {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+.tableSimple th:first-child {
+    left: 0;
+    z-index: 2;
+}
+
+.tableSimple td {
+   width: max-content;
+   word-wrap: normal;
+}
+
+.tableSimple td:first-child {
+    position: sticky;
+    left: 0;
+}
