@@ -1,38 +1,30 @@
-import React                 from 'react'
+import React                  from 'react'
 
 import { useTable,
          useSortBy,
-         useFilters, }       from 'react-table'
+         useFilters, }        from 'react-table'
 
 
 
-const tableStyle = { border: 'solid 1px blue' }
+const getCustomStyles = (customSlyles = {}) => {
+    const { tableStyle  = {},
+            headerStyle = {},
+            cellStyle   = {} } = customSlyles
 
-const thStyle    = {
-    borderBottom: 'solid 3px red',
-    background:   'aliceblue',
-    color:        'black',
-    fontWeight:   'bold',
-}
+    //possible ToDo => some additional logic here
 
-const tdStyle    = {
-    padding: '10px',
-    border: 'solid 1px gray',
-    background: 'papayawhip',
+    return { tableStyle,
+             thStyle: headerStyle,
+             tdStyle: cellStyle }
 }
 
 
 
+export function TableSimple({ columns, data, customSlyles }) {
+    const { tableStyle,
+            thStyle,
+            tdStyle } = getCustomStyles(customSlyles)
 
-
-
-
-
-
-
-
-
-export function TableSimple({ columns, data }) {
     const filterTypes = React.useMemo(
         () => ({
             text: (rows, id, filterValue) => {
@@ -54,8 +46,6 @@ export function TableSimple({ columns, data }) {
         headerGroups,
         rows,
         prepareRow,
-        state,
-        visibleColumns,
     } = useTable(
         { columns,
           data,

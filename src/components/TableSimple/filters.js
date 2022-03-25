@@ -1,5 +1,11 @@
 import React from 'react'
 
+
+const commonFilteerStyles = {
+    borderRadius: '0.5em',
+    textAlign: 'center'
+}
+
 export function SelectColumnFilter({column: { filterValue, setFilter, preFilteredRows, id },}) {
     const options = React.useMemo(() => {
         const options = new Set()
@@ -11,6 +17,7 @@ export function SelectColumnFilter({column: { filterValue, setFilter, preFiltere
 
     return (
         <select
+            style    = {commonFilteerStyles}
             value    = {filterValue}
             onChange = {e => { setFilter(e.target.value || undefined) }}
         >
@@ -79,9 +86,10 @@ export function DefaultColumnFilter({ column: { filterValue, preFilteredRows, se
     const count = preFilteredRows.length
     return (
         <input
+            style       = {commonFilteerStyles}
             value       = {filterValue || ""}
             onChange    = {(e) => { setFilter(e.target.value || undefined) }}
-            placeholder = {`Search ${count} records...`}
+            placeholder = {`filter`}
         />
     )
 }

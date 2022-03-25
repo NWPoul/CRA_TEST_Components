@@ -1,7 +1,7 @@
 import React from 'react'
 
 import './App.css'
-import { TableSimple }  from './components/TableSimple'
+import { TableSimple }        from './components/TableSimple'
 import { DefaultColumnFilter,
          SelectColumnFilter } from './components/TableSimple/filters'
 
