@@ -1,4 +1,4 @@
-import React                  from 'react'
+import { useMemo }           from 'react'
 
 import { useTable,
          useSortBy,
@@ -18,6 +18,23 @@ const getCustomStyles = (customSlyles = {}) => {
              tdStyle: cellStyle }
 }
 
+const getColumns = (columns) => {
+    return columns.map(column => {
+        let resultColumnObject = {
+            Header:   column.name,
+            accessor: column.field  || column.name,
+        }
+
+        if ( column.filter ) {
+            resultColumnObject.Filter         = column.filter
+        } else {
+            resultColumnObject.disableFilters = true
+        }
+
+        return resultColumnObject
+    })
+}
+
 
 
 export function TableSimple({ columns, data, customSlyles }) {
@@ -25,7 +42,7 @@ export function TableSimple({ columns, data, customSlyles }) {
             thStyle,
             tdStyle } = getCustomStyles(customSlyles)
 
-    const filterTypes = React.useMemo(
+    const filterTypes = useMemo(
         () => ({
             text: (rows, id, filterValue) => {
                 return rows.filter((row) => {
@@ -40,6 +57,8 @@ export function TableSimple({ columns, data, customSlyles }) {
         }), []
     )
 
+    const parsedColumns = useMemo( () => getColumns(columns) , [columns])
+
     const {
         getTableProps,
         getTableBodyProps,
@@ -47,7 +66,7 @@ export function TableSimple({ columns, data, customSlyles }) {
         rows,
         prepareRow,
     } = useTable(
-        { columns,
+        { columns: parsedColumns,
           data,
           filterTypes, },
         useFilters,

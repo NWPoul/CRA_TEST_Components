@@ -1,4 +1,6 @@
-import React from 'react'
+import {useMemo} from 'react'
+
+
 
 
 const commonFilteerStyles = {
@@ -7,7 +9,7 @@ const commonFilteerStyles = {
 }
 
 export function SelectColumnFilter({column: { filterValue, setFilter, preFilteredRows, id },}) {
-    const options = React.useMemo(() => {
+    const options = useMemo(() => {
         const options = new Set()
             preFilteredRows.forEach(row => {
                 options.add(row.values[id])
@@ -34,7 +36,7 @@ export function SelectColumnFilter({column: { filterValue, setFilter, preFiltere
 
 
 export function NumberRangeColumnFilter({column: { filterValue = [], preFilteredRows, setFilter, id },}) {
-    const [min, max] = React.useMemo(() => {
+    const [min, max] = useMemo(() => {
       let min = preFilteredRows.length ? preFilteredRows[0].values[id] : 0
       let max = preFilteredRows.length ? preFilteredRows[0].values[id] : 0
       preFilteredRows.forEach(row => {

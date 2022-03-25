@@ -1,4 +1,4 @@
-import React from 'react'
+import { useMemo } from 'react'
 
 import './App.css'
 import { TableSimple }        from './components/TableSimple'
@@ -7,28 +7,28 @@ import { DefaultColumnFilter,
 
 import { MOCK_DATA }   from "./mockData"
 
+
 const COLUMNS = [
-    { Header: 'id',       accessor: 'id',      disableFilters: true,},
-    { Header: 'Date',     accessor: 'Date',    disableFilters: true,},
-    { Header: 'Time',     accessor: 'Time',    disableFilters: true,},
-    { Header: 'name',     accessor: 'name',    Filter: DefaultColumnFilter,},
-    { Header: 'phone',    accessor: 'phone',   disableFilters: true,},
-    { Header: 'email',    accessor: 'email',   disableFilters: true,},
-    { Header: 'Notes',    accessor: 'Notes',   disableFilters: true,},
-    { Header: 'Payment',  accessor: 'Payment', Filter: SelectColumnFilter,},
+    { name: 'Id',       field: 'id', },
+    { name: 'Date', },
+    { name: 'Time', },
+    { name: 'Name',     field: 'name', filter: DefaultColumnFilter, },
+    { name: 'Phone',    field: 'phone', },
+    { name: 'email', },
+    { name: 'Notes', },
+    { name: 'Payment',                 filter: SelectColumnFilter, },
 ]
 
 const DATA    = MOCK_DATA.payments
 
 
 function App() {
-    const columns = React.useMemo(() => COLUMNS, [])
-    const data    = React.useMemo(() => DATA, [])
+    const data    = useMemo(() => DATA, [])
 
     return (
         <div className="App">
             <TableSimple
-                columns = {columns}
+                columns = {COLUMNS}
                 data    = {data}
             />
         </div>
