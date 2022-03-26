@@ -85,7 +85,6 @@ export function NumberRangeColumnFilter({column: { filterValue = [], preFiltered
 
 
 export function DefaultColumnFilter({ column: { filterValue, preFilteredRows, setFilter }}) {
-    const count = preFilteredRows.length
     return (
         <input
             style       = {commonFilteerStyles}
