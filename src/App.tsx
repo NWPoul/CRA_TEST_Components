@@ -1,11 +1,11 @@
-import { useMemo } from 'react'
+import React, { useMemo }     from 'react'
 
 import './App.css'
-import { TableSimple }        from './components/TableSimple'
+import { TableSimple, }       from './components/TableSimple'
 import { DefaultColumnFilter,
          SelectColumnFilter } from './components/TableSimple/filters'
 
-import { MOCK_DATA }   from "./mockData"
+import { MOCK_DATA }          from "./mockData"
 
 
 const COLUMNS = [
@@ -23,13 +23,13 @@ const DATA    = MOCK_DATA.payments
 
 
 function App() {
-    const data    = useMemo(() => DATA, [])
+    const data    = useMemo( () => DATA, [])
 
     return (
         <div className="App">
             <TableSimple
-                columns = {COLUMNS}
-                data    = {data}
+                rawColumns = {COLUMNS}
+                data       = {data}
             />
         </div>
     )
