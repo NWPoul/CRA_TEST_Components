@@ -1,7 +1,7 @@
-import {useMemo} from 'react'
-import CSS       from 'csstype'
+import React, {useMemo} from 'react'
+import CSS              from 'csstype'
 
-import { FilterProps, }    from 'react-table'
+import { FilterProps, } from 'react-table'
 
 
 
